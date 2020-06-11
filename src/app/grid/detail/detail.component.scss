@@ -1,0 +1,29 @@
+.detail {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    &-cover {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+
+        img {
+            display: flex;
+            width: 100%;
+        }
+    }
+
+    &-content {
+        flex: 1;
+        writing-mode: vertical-lr;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: var(--bee-padding) 0;
+        font-size: 16px;
+        font-family: var(--bee-font-family);
+    }
+}

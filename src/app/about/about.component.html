@@ -1,0 +1,25 @@
+<ion-content>
+    <div class="bee-about" *ngIf="loading">
+        <div class="bee-about-cover">
+            <div class="about-title">
+                {{data.name}}
+            </div>
+            <div class="about-cover">
+                <img [src]="host + data.weixin">
+            </div>
+            <div class="about-address">
+                {{data.address}}
+            </div>
+        </div>
+
+        <div class="bee-about-content">
+            <div class="bee-item" (click)="itemClick(1)"> ᠮᠦᠽᠧᠶ ᠶᠢᠨ ᠲᠣᠪᠴᠢ ᠲᠠᠨᠢᠯᠴᠠᠭᠤᠯᠭ᠎ᠠ </div>
+            <div class="bee-item" (click)="itemClick(2)"> ᠬᠥᠭᠵᠢᠯᠲᠡ ᠶᠢᠨ ᠶᠠᠪᠤᠴᠠ </div>
+            <div class="bee-item" (click)="itemClick(3)"> ᠨᠡᠭᠡᠭᠡᠬᠦ ᠴᠠᠭ </div>
+            <div class="bee-item" (click)="itemClick(5)"> ᠵᠠᠮ ᠬᠠᠷᠢᠯᠴᠠᠭᠠᠨ ᠤ ᠵᠦᠭᠯᠡᠭᠦᠷ </div>
+            <div class="bee-item" (click)="itemClick(6)"> ᠵᠤᠭᠠᠴᠠᠭᠰᠠᠳ ᠤᠨ ᠮᠡᠳᠡᠬᠦ ᠶᠣᠰᠣᠲᠠᠶ ᠵᠦᠶᠯ </div>
+            <div class="bee-item" (click)="itemClick(7)"> ᠠᠵᠢᠯ ᠲᠥᠷᠥᠯ ᠤᠨ ᠪᠦᠯᠦᠭ </div>
+            <div class="bee-item" (click)="itemClick(8)"> ᠰᠣᠶᠣᠯ ᠤᠨ ᠡᠭᠦᠳᠦᠯᠲᠡ ᠶᠢᠨ ᠪᠢᠴᠢᠯ ᠳᠡᠯᠭᠡᠭᠦᠷ </div>
+        </div>
+    </div>
+</ion-content>

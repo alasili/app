@@ -1,0 +1,20 @@
+<ion-content>
+    <div class="bee-detail">
+        <div class="bee-detail-header">
+            <ion-toolbar color="primary" mode="ios">
+                <ion-buttons slot="start">
+                    <ion-back-button text="" icon="chevron-back" defaultHref="/views/about"></ion-back-button>
+                </ion-buttons>
+
+                <ion-title style="text-align: center">
+                    <ion-label class="title"> 交通指南 </ion-label>
+                </ion-title>
+            </ion-toolbar>
+        </div>
+
+        <div *ngIf="loading && data.ico" class="bee-detail-cover">
+            <img [src]="host + data.ico">
+        </div>
+        <div *ngIf="loading" class="bee-detail-content" [innerHTML]="data.content"></div>
+    </div>
+</ion-content>

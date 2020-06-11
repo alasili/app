@@ -1,0 +1,13 @@
+.bee-label {
+    font-size: 12px;
+    height: 100px;
+    width: inherit;
+    display: block;
+    white-space: normal;
+    writing-mode: vertical-lr;
+    font-family: var(--bee-font-family) !important;
+    font-weight: normal;
+    font-style: normal;
+    -webkit-text-orientation: sideways-right;
+    padding: calc(var(--bee-padding) / 2) 0;
+}

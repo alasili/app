@@ -1,0 +1,11 @@
+<bee-header [title]="loading ? data.subtitle : ''" back="/views/grid"></bee-header>
+
+<ion-content class="bee-container">
+    <div class="detail" *ngIf="loading">
+        <div class="detail-cover" *ngIf="data.ico">
+            <img [src]="host + data.ico">
+        </div>
+        <div class="detail-content" [innerHTML]="data.content">
+        </div>
+    </div>
+</ion-content>

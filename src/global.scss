@@ -24,3 +24,38 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+.jason-font {
+    writing-mode: vertical-lr;
+    font-family: "OrhonChaganTig";
+}
+
+.jason-title {
+    font-size: 22px;
+}
+
+.jason-subtitle {
+    font-size: 20px;
+}
+
+.jason-text {
+    font-size: 14px;
+}
+
+.orh-ionic-toast {
+    --width: auto;
+    --start: 1;
+    font-size: 12px;
+    font-family: var(--orh-font-family) !important;
+    writing-mode: vertical-lr;
+    --border-width: 0 10px;
+    --border-style: solid;
+    --border-color: #333333;
+}
+
+.bee-container {
+    --background: url('./assets/image/body-bg.jpg');
+    background-image: url('./assets/image/body-bg.jpg');
+    background-repeat: repeat;
+}

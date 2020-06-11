@@ -1,0 +1,31 @@
+<ion-content>
+    <ion-slides [options]="slideConfig" style="margin-bottom: 8px;">
+        <ion-slide *ngFor="let item of data; let i = index;">
+            <img [src]="host + item.pic">
+        </ion-slide>
+    </ion-slides>
+
+    <ion-refresher (ionRefresh)="doRefresh()">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <div class="bee-tabs">
+        <div class="bee-tabs-item" *ngFor="let item  of tabs;">
+            <div class="item-icon"></div>
+            <div class="item-label">
+                <span [innerHTML]="item.label"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="bee-title">
+        <div class="bee-title-left">
+            
+        </div>
+        <div class="bee-title-right">
+
+        </div>
+    </div>
+
+    <bee-list [data]="list" (onItemClick)="detailChange($event)"></bee-list>
+</ion-content>

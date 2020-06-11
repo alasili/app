@@ -1,0 +1,9 @@
+<div class="news">
+    <div class="news-logo" (click)="logoChange()">
+        <img [src]="host + cover">
+    </div>
+
+    <div class="news-item" *ngFor="let item of data; let i = index;" [ngStyle]="setItemStyle(i)" (click)="itemChange(item)">
+        <img class="cover" [src]="item.ico ? host + item.ico : '../../assets/image/no-cover.jpg'">
+    </div>
+</div>

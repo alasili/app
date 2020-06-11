@@ -1,0 +1,17 @@
+<ion-header translucent>
+    <ion-toolbar color="primary" mode="ios">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="chevron-back" *ngIf="back !== undefined" [defaultHref]="back ? back : '/'"></ion-back-button>
+        </ion-buttons>
+
+        <ion-title style="text-align: center">
+            <ion-label class="title"> {{ title }} </ion-label>
+        </ion-title>
+
+        <ion-buttons slot="end">
+            <ng-content select="[slot=end]"></ng-content>
+        </ion-buttons>
+    </ion-toolbar>
+
+    <ng-content></ng-content>
+</ion-header>

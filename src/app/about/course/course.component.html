@@ -1,0 +1,29 @@
+<ion-content>
+    <div class="bee-detail">
+        <div class="bee-detail-header">
+            <ion-toolbar color="primary" mode="ios">
+                <ion-buttons slot="start">
+                    <ion-back-button text="" icon="chevron-back" defaultHref="/views/about"></ion-back-button>
+                </ion-buttons>
+
+                <ion-title style="text-align: center">
+                    <ion-label class="title"> 发展历程 </ion-label>
+                </ion-title>
+            </ion-toolbar>
+        </div>
+
+        <div class="bee-detail-segment">
+            <ion-segment scrollable [value]="courseId" (ionChange)="segmentChange($event)">
+                <ion-segment-button *ngFor="let item of data;" [value]="item.scode">
+                    {{ item.name }}
+                </ion-segment-button>
+            </ion-segment>
+        </div>
+
+        <div *ngIf="loading && detail.ico" class="bee-detail-cover">
+            <img [src]="host + detail.ico">
+        </div>
+
+        <div *ngIf="loading" class="bee-detail-content" [innerHTML]="detail.content"></div>
+    </div>
+</ion-content>

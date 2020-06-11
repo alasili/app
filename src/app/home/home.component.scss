@@ -1,0 +1,27 @@
+.bee-tabs {
+    display: flex;
+    justify-content: space-around;
+
+    &-item {
+        width: 60px;
+        display: flex;
+        flex-direction: column;
+
+        .item-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(180deg,rgba(237,99,100,1) 0%,rgba(148,0,2,1) 100%);
+            border-radius: 50%;
+        }
+
+        .item-label {
+            height: 100px;
+            writing-mode: vertical-lr;
+            font-family: var(--bee-font-family-amglang);
+            font-size: 16px;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+        }
+    }
+}

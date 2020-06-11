@@ -1,0 +1,10 @@
+<div class="bee-list">
+    <div class="bee-list-cover" *ngIf="cover">
+        <img [src]="host + cover">
+    </div>
+
+    <div class="bee-list-item" *ngFor="let item of data; let i = index;" (click)="itemChange(item)">
+        <div class="title"> {{item.title}} </div>
+        <img class="cover" [src]="item.ico ? host + item.ico : '../../assets/image/no-cover.svg'">
+    </div>
+</div>

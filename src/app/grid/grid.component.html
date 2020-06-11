@@ -1,0 +1,29 @@
+<ion-header translucent>
+    <ion-segment (ionChange)="segmentChanged($event)" scrollable [(ngModel)]="segmentValue">
+        <ion-segment-button *ngFor="let item of data; let i = index;" [value]="item.id">
+            <bee-icon [name]="item.ico" size="24" [color]="segmentValue === item.id ? 'primary' : ''"></bee-icon>
+        </ion-segment-button>
+    </ion-segment>
+</ion-header>
+
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh()">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <ion-segment (ionChange)="segmentChanged2($event)" scrollable [(ngModel)]="segmentValue2">
+        <ion-segment-button *ngFor="let item of data2; let i = index;" [value]="item.scode">
+            <div class="bee-label">{{item.name}}</div>
+        </ion-segment-button>
+    </ion-segment>
+
+    <ion-slides [options]="slideConfig" (ionSlideDidChange)="slideChange()" #slides>
+        <ion-slide *ngFor="let item of data; let i = index;">
+            <bee-list [cover]="coverUrl" [data]="list" (onItemClick)="detailChange($event)"></bee-list>
+        </ion-slide>
+    </ion-slides>
+
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData()">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>
