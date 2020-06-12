@@ -26,7 +26,51 @@
         </ion-slide>
     </ion-slides>
 -->
-    
+    <ion-slides [options]="slideConfig" style="margin-bottom: 8px;" class="slide-container">
+        <ion-slide *ngFor="let item of data; let i = index;" class="slide-wrapper">
+            <img [src]="host + item" class="slide-img">
+        </ion-slide>
+    </ion-slides>
+
+    <div class="list-block media-list article-list">
+        <ul>
+            <li>
+                <div class="item-content" *ngFor="let item of list; let i = index;" (click)="detailChange(item)">
+                    <div class="item-media">
+                        <img class="round-img" style="width:100px;height:100px;" [src]="host + item.ico" />
+                    </div>
+                    <div class="item-inner inner-flex">
+                        <div class="title">
+                            <div class="mongol-wrapper">
+                                <span class="mongol">{{item.title}}</span>
+                            </div>
+                        </div>
+                        <div class="desc-wrapper">
+                            <div class="content">
+                                <div class="mongol-wrapper">
+                                    <p class="mongol" [innerHTML]="safeHtml(item.content)"></p>
+                                </div>
+                            </div>
+                            <div class="second-line">
+                                <div class="align-center">
+                                    <img class="icon" src="../../../assets/image/clock.png"/>
+                                    <span style="margin-left:5px;">{{formatDate(item.date)}}</span>
+                                </div>
+                                <div class="views">
+                                    <div class="align-center">
+                                        <img class="icon" src="../../../assets/image/Eye.png" />
+                                        <span  style="margin-left:5px;">{{item.visits}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+
 
     <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData()">
         <ion-infinite-scroll-content></ion-infinite-scroll-content>

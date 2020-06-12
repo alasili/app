@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
     selector: 'bee-header',
@@ -10,9 +11,13 @@ export class HeaderComponent implements OnInit {
     @Input() title: string;
     @Input() back: boolean;
 
-    constructor() { }
+    constructor(public nav: NavController) { }
 
     ngOnInit() {
     }
 
+
+    goBack() {
+        this.nav.back();
+    }
 }

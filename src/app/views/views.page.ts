@@ -1,4 +1,5 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-views',
@@ -12,7 +13,10 @@ export class ViewsPage implements OnInit {
     @ViewChild('exhibition1', {static: true}) exhibition1;
     @ViewChild('exhibition2', {static: true}) exhibition2;
 
-    constructor() {
+    @ViewChild('tabbar') tabbar:ElementRef;
+
+    constructor(private router: Router,
+        private el:ElementRef) {
     }
 
     slideOpts = {
@@ -104,5 +108,23 @@ export class ViewsPage implements OnInit {
 
     segmentChanged(ev: any) {
         this.slides.slideTo(ev.detail.value, 400);
+    }
+    gotoMap() {
+        this.router.navigate(['/detail'], {queryParams: {id: '33'}});
+    }
+
+    gotoNewsList(par) {
+        this.router.navigate(['grid'], {queryParams: {par: par}});
+    }
+    onTabClick(idx) {
+        var na = this.el.nativeElement;//this.tabbar.nativeElement;
+        var buttons = na.querySelectorAll('ion-tab-button');
+        console.log(buttons);
+        buttons.forEach(btn => {
+            console.log(btn)
+            if (btn.classList.contains('tab-selected'))
+                btn.classList.remove('tab-selected');
+        });
+        buttons[idx].classList.add('tab-selected');
     }
 }

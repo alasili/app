@@ -30,22 +30,22 @@ export class HomeComponent implements OnInit {
 
     tabs = [
         {
-            icon: '',
+            icon: 'home_tab1',
             label: 'ᠦᠵᠡᠰᠬᠦᠯᠡᠩ <br> ᠦᠨ <br> ᠠᠩᠬᠠᠷᠤᠯ',
             value: 1
         },
         {
-            icon: '',
+            icon: 'home_tab2',
             label: 'ᠬᠡᠶ᠋ᠢᠰᠪᠦᠷᠢ <br> ᠮᠦᠽᠧᠶ',
             value: 2
         },
         {
-            icon: '',
-            label: `ᠰᠣᠶᠣᠯ ᠤᠨ <br> ᠡᠭᠦᠳ᠋ᠦᠯᠲᠡ ᠶ᠋ᠢᠨ <br> ᠦᠶᠯᠡᠳᠬᠦᠨ`,
+            icon: 'home_tab3',
+            label: `ᠰᠣᠶᠣᠯ ᠤᠨ <br>ᠡᠭᠦᠳ᠋ᠦᠯᠲᠡ ᠶ᠋ᠢᠨ <br> ᠦᠶᠯᠡᠳᠬᠦᠨ`,
             value: 3
         },
         {
-            icon: '',
+            icon: 'home_tab4',
             label: 'ᠡᠷᠳᠠᠮ <br> ᠰᠢᠠᠵᠢᠯᠠ‍ᠭᠡ',
             value: 4
         }
@@ -123,7 +123,7 @@ export class HomeComponent implements OnInit {
 
     requestMusemList() {
         const params = {
-            url: 'api.php/list/28/page/1/num/3',
+            url: 'api.php/list/28/page/1/num/10',
             data: {}
         };
         this.http.get(params).subscribe(res => {
@@ -143,9 +143,28 @@ export class HomeComponent implements OnInit {
         this.getData();
     }
 
-    gotoNewsList(event: any) :void{
-        console.log('-----')
-        this.router.navigate(['/grid'], {queryParams: {}});
+    gotoNewsList(sid, catId) :void{
+        this.router.navigate(['grid'], {queryParams: {par: '1,' + sid + ',' + catId}});
     }
 
+    onTabClick(i: any):void {
+        console.log(i);
+        switch (i)
+        {
+            case 0:
+                this.detailChange({
+                    id: 34
+                });
+                break;
+            case 1:
+                break;
+            case 2:
+                this.gotoNewsList(16, 43);
+                break;
+            case 3:
+                this.gotoNewsList(15, 40);
+                break;
+        }
+        
+    }
 }

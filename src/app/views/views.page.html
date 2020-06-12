@@ -1,23 +1,23 @@
 <ion-tabs>
-    <ion-tab-bar slot="bottom">
-        <ion-tab-button tab="home">
+    <ion-tab-bar slot="bottom" #tabbar>
+        <ion-tab-button tab="home" (click)="onTabClick(0)">
             <bee-icon name="iconshouye" size="25"></bee-icon>
         </ion-tab-button>
 
-        <ion-tab-button tab="tab2">
+        <ion-tab-button tab="grid/1,13,27" (click)="onTabClick(1)">
             <bee-icon name="iconchenliezhanlan" size="25"></bee-icon>
         </ion-tab-button>
 
-        <ion-tab-button tab="tabMap">
+        <ion-tab-button (click)="gotoMap()">
             <bee-icon name="iconbowuguanditu" size="25"></bee-icon>
         </ion-tab-button>
 
-        <ion-tab-button tab="grid">
+        <ion-tab-button tab="grid/1,16,42" (click)="onTabClick(3)">
             <bee-icon name="iconshuziqingtong" size="25"></bee-icon>
         </ion-tab-button>
 
-        <ion-tab-button tab="about">
-            <bee-icon name="iconzoujineqingbowuguan" size="25"></bee-icon>
+        <ion-tab-button tab="about" (click)="onTabClick(4)">
+            <bee-icon name="iconguanyuwomen" size="25"></bee-icon>
         </ion-tab-button>
     </ion-tab-bar>
 </ion-tabs>

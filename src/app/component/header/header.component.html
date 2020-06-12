@@ -1,11 +1,14 @@
 <ion-header translucent>
     <ion-toolbar mode="ios">
         <ion-buttons slot="start">
-            <ion-back-button text="" icon="chevron-back" *ngIf="back !== undefined" [defaultHref]="back ? back : '/'"></ion-back-button>
+            <!-- <ion-back-button text="" icon="chevron-back" *ngIf="back !== undefined" [defaultHref]="back ? back : '/'"></ion-back-button> -->
+            <ion-button (click)="goBack()" *ngIf="back">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
         </ion-buttons>
 
-        <ion-title style="text-align: center">
-            鄂青博快讯
+        <ion-title style="text-align: center" class="title">
+            {{title}}
         </ion-title>
 
         <ion-buttons slot="end">

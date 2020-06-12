@@ -3,7 +3,12 @@ import {HttpService} from '../service/http/http.service';
 import Config from '../config';
 import {UtilsService} from '../service/utils/utils.service';
 import {IonInfiniteScroll, IonRefresher} from '@ionic/angular';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import { ɵangular_packages_platform_browser_platform_browser_k } from '@angular/platform-browser';
+import { prepareEventListenerParameters } from '@angular/compiler/src/render3/view/template';
+// import { SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS } from 'constants';
+// import { spawnSync } from 'child_process';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-grid',
@@ -29,16 +34,30 @@ export class GridComponent implements OnInit {
     slideConfig = {
         initialSlide: 0
     };
-    title : '鄂青博快讯';
-    back : undefined;
+    title = '鄂青博快讯';
+    back = true;
+    requestType = 0;
+    pid = -1;
+    catPic = '';
 
     constructor(private http: HttpService,
+                private route: ActivatedRoute,
                 private router: Router,
-                private toast: UtilsService) {
+                private toast: UtilsService,
+                public sanitizer: DomSanitizer) {
+        this.route.params.subscribe(res => {
+            if (res.par === null || res.par === undefined) {
+                this.parseParams(this.route.snapshot.queryParams.par);
+            }
+            else {
+                this.parseParams(res.par);
+            }
+        })
     }
 
     ngOnInit() {
         this.getTabs();
+        this.getDatas();
     }
 
     getTabs(): void {
@@ -47,7 +66,9 @@ export class GridComponent implements OnInit {
         };
         this.http.get(params).subscribe(res => {
             if (res.code === 1) {
-                this.data = res.data;
+                var dd = res.data;
+                console.log(dd);
+                /*
                 this.segmentValue = res.data[0].id;
                 this.coverUrl = res.data[0].pic;
                 this.data2 = res.data[0].son;
@@ -58,6 +79,23 @@ export class GridComponent implements OnInit {
 
                 if (this.segmentValue2) {
                     this.getData();
+                }
+                */
+                this.data.splice(0, this.data.length);
+                if (this.pid != -1) {
+                    dd.forEach(d => {
+                        if (d.id === this.pid) {
+                            this.title = d.subname != null && d.subname.length >0 ? d.subname : d.title;
+
+                            var son = d.son ? d.son : [];
+                            son.forEach(dSon => {
+                                if (this.segmentValue2 === dSon.scode) {
+                                    console.log(dSon);
+                                    this.data.push(dSon.title);
+                                }
+                            });
+                        }
+                    });
                 }
             }
         });
@@ -134,4 +172,49 @@ export class GridComponent implements OnInit {
         this.router.navigate(['/detail'], {queryParams: {id: event.id}});
     }
 
+    parseParams(res) {
+        var pSplit = res.split(',');
+        if (pSplit.length == 0)
+            return;
+
+        this.back = pSplit.length > 1;
+        
+        this.requestType = pSplit[0];
+
+        if (pSplit.length > 1) {
+            this.pid = pSplit[1];
+            this.segmentValue2 = pSplit[2];
+        }
+    }
+
+    getDatas() {
+        if (this.requestType == 0)
+            this.cmsSearch();
+        else if (this.requestType == 1)
+            this.getData();
+    }
+
+    cmsSearch() {
+        const params = {
+            url: 'api.php/cms/search',
+            data: 'isrecommend=1'
+        };
+        this.http.post(params, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+            }
+        }).subscribe(res => {
+            if (res.code === 1) {
+                this.list = res.data;
+            }
+        });
+    }
+
+    safeHtml(content) {
+        return this.sanitizer.bypassSecurityTrustHtml(content);
+    }
+
+    formatDate(date) {
+        return date.substring(0, date.indexOf(' '));
+    }
 }

@@ -1,10 +1,12 @@
 <ion-content>
     <div class="app-title">
-        <span class="mongol">ᠲᠡᠷᠢᠭᠦᠨ</span>
-        <span class="mongol">ᠨᠢᠭᠤᠷ</span>
+        <div class="mongol-wrapper">
+            <span class="mongol">ᠲᠡᠷᠢᠭᠦᠨ</span>
+            <span class="mongol">ᠨᠢᠭᠤᠷ</span>
+        </div>
     </div>
-    <ion-slides [options]="slideConfig" style="margin-bottom: 8px;" class="home-slides">
-        <ion-slide *ngFor="let item of data; let i = index;">
+    <ion-slides [options]="slideConfig" style="margin-bottom: 8px;" class="home-slides slide-container">
+        <ion-slide *ngFor="let item of data; let i = index;" class="slide-wrapper">
             <img [src]="host + item.pic" class="slide-img">
         </ion-slide>
     </ion-slides>
@@ -14,8 +16,8 @@
     </ion-refresher>
 
     <div class="bee-tabs">
-        <div class="bee-tabs-item" *ngFor="let item  of tabs;">
-            <div class="item-icon"></div>
+        <div class="bee-tabs-item" *ngFor="let item  of tabs; let i = index;" (click)="onTabClick(i)">
+            <div class="item-icon"><img src="../../../assets/image/{{item.icon}}.png"/></div>
             <div class="item-label">
                 <span [innerHTML]="item.label"></span>
             </div>
@@ -36,16 +38,16 @@
             <div class="title-part-left">
                 <div class="title-spec"></div>
                 <div class="text-wrapper mongol-wrapper">
-                    <span class="mongol">ᠡᠷᠳᠡᠮ</span>
-                    <span class="mongol">ᠰᠢᠨᠵᠢᠯᠡᠭᠡ</span>
+                    <span class="mongol">ᠰᠣᠨᠢᠨ</span>
+                    <span class="mongol">ᠮᠡᠳᠡᠭᠡ</span>
                 </div>
             </div>
             
         </div>
-        <div class="item-after" (click)="gotoNewsList()">
+        <div class="item-after" (click)="gotoNewsList(1,31)">
             <div class="l-font mongol-wrapper">
-                <span class="mongol">ᠰᠣᠨᠢᠨ</span>
-                <span class="mongol">ᠮᠡᠳᠡᠭᠡ</span>
+                <span class="mongol">ᠡᠷᠳᠠᠮ</span>
+                <span class="mongol">ᠰᠢᠠᠵᠢᠯᠠ‍ᠭᠡ</span>
                 <span class="arrow-right"></span>
             </div>
         </div>
@@ -69,25 +71,25 @@
             <div class="title-part-left">
                 <div class="title-spec"></div>
                 <div class="text-wrapper mongol-wrapper">
-                    <span class="mongol">轮询</span>
-                    <span class="mongol">3</span>
-                    <span class="mongol">4</span>
+                    <span class="mongol">ᠰᠢᠨ᠎ᠡ</span>
+                    <span class="mongol">ᠦᠵᠡᠭᠦᠯᠦᠯᠭᠡ</span>
+                    <span class="mongol">ᠲᠠᠨᠢᠯᠴᠠᠭᠤᠯᠬᠤ</span>
                 </div>
             </div>
             
         </div>
-        <div class="item-after">
+        <div class="item-after" (click)="gotoNewsList(13,29)">
             <div class="l-font mongol-wrapper">
-                <span class="mongol">ᠰᠣᠨᠢᠨ</span>
-                <span class="mongol">ᠮᠡᠳᠡᠭᠡ</span>
+                <span class="mongol">ᠡᠷᠳᠠᠮ</span>
+                <span class="mongol">ᠰᠢᠠᠵᠢᠯᠠ‍ᠭᠡ</span>
                 <span class="arrow-right"></span>
             </div>
         </div>
     </div>
 
-    <ion-slides [options]="slideConfig" style="margin-bottom: 8px;">
-        <ion-slide *ngFor="let item of slidesData2; let i = index;">
-            <img [src]="item.ico ? host + item.ico : ''" class="slide-img">
+    <ion-slides [options]="slideConfig" style="margin-bottom: 8px;"  class="slide-container">
+        <ion-slide *ngFor="let item of slidesData2; let i = index;"  class="slide-wrapper">
+            <img [src]="item.ico ? host + item.ico : ''" class="slide-img" (click)="detailChange(item)">
         </ion-slide>
     </ion-slides>
 
@@ -96,31 +98,28 @@
             <div class="title-part-left">
                 <div class="title-spec"></div>
                 <div class="text-wrapper mongol-wrapper">
-                    <span class="mongol">青铜器</span>
-                    <span class="mongol">5</span>
-                    <span class="mongol">6</span>
+                    <span class="mongol">ᠰᠤᠳᠤᠨ</span>
+                    <span class="mongol">ᠰᠢᠯᠢᠳᠡᠭ</span>
+                    <span class="mongol">ᠬᠠᠳᠠᠭᠠᠯᠠᠯᠲᠠ</span>
                 </div>
             </div>
             
         </div>
-        <div class="item-after">
-            <div class="l-font mongol-wrapper">
-                <span class="mongol">ᠰᠣᠨᠢᠨ</span>
-                <span class="mongol">ᠮᠡᠳᠡᠭᠡ</span>
-                <span class="arrow-right"></span>
-            </div>
-        </div>
     </div>
 
     <div class="row news-block">
-        <div class="col-30"  *ngFor="let item of musemList2; let i = index;">
-            <div class="news-wrapper">
-                <div class="mask-text-box">
-                    <div class="mongol-wrapper">
-                        <span class="mongol">{{item.title.substring(0,20)}}</span>
+        <div class="scrollx-container-wrap">
+            <div class="scrollx-container">
+                <div class="col-30"  *ngFor="let item of musemList2; let i = index;">
+                    <div class="news-wrapper sequre">
+                        <div class="mask-text-box">
+                            <div class="mongol-wrapper">
+                                <span class="mongol">{{item.title.substring(0,20)}}</span>
+                            </div>
+                        </div>
+                        <img [src]="item.ico ? host + item.ico : ''">
                     </div>
                 </div>
-                <img [src]="item.ico ? host + item.ico : ''">
             </div>
         </div>
     </div>

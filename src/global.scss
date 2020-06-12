@@ -62,7 +62,7 @@
 
 .mongol-wrapper {
     display: flex;
-    align-items:center
+    align-items:baseline;
 }
 .mongol {
     writing-mode: vertical-lr;
@@ -212,3 +212,14 @@
   .col-100 {
     width: 100%;
   }
+.slide-container {
+    background: #ffffff;
+}
+.slide-wrapper {
+    padding: 0px 20px 10px 20px;
+}
+.slide-wrapper .slide-img {
+    border-radius: 14px;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+}
