@@ -24,6 +24,9 @@ export class HomeComponent implements OnInit {
     };
     data = [];
     list = [];
+    newsData = [];
+    slidesData2 = [];
+    musemList2 = [];
 
     tabs = [
         {
@@ -55,6 +58,9 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         this.getBanner();
         this.getData();
+        this.requestNews();
+        this.requestSlideData2();
+        this.requestMusemList();
     }
 
     getBanner() {
@@ -87,6 +93,47 @@ export class HomeComponent implements OnInit {
         });
     }
 
+    requestNews() {
+        const params = {
+            url: 'api.php/list/31/page/1/num/3',
+            data: {}
+        };
+        this.http.get(params).subscribe(res => {
+            if (res.code === 1) {
+                this.newsData = res.data;
+            }
+
+            this.refresher.complete();
+        });
+    }
+
+    requestSlideData2() {
+        const params = {
+            url: 'api.php/list/29/page/1/num/10',
+            data: {}
+        };
+        this.http.get(params).subscribe(res => {
+            if (res.code === 1) {
+                this.slidesData2 = res.data;
+            }
+
+            this.refresher.complete();
+        });
+    }
+
+    requestMusemList() {
+        const params = {
+            url: 'api.php/list/28/page/1/num/3',
+            data: {}
+        };
+        this.http.get(params).subscribe(res => {
+            if (res.code === 1) {
+                this.musemList2 = res.data;
+            }
+            this.refresher.complete();
+        });
+    }
+
     detailChange(event: any): void {
         this.router.navigate(['/detail'], {queryParams: {id: event.id}});
     }
@@ -94,6 +141,11 @@ export class HomeComponent implements OnInit {
     doRefresh(): void {
         this.list = [];
         this.getData();
+    }
+
+    gotoNewsList(event: any) :void{
+        console.log('-----')
+        this.router.navigate(['/grid'], {queryParams: {}});
     }
 
 }

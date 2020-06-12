@@ -29,6 +29,8 @@ export class GridComponent implements OnInit {
     slideConfig = {
         initialSlide: 0
     };
+    title : '鄂青博快讯';
+    back : undefined;
 
     constructor(private http: HttpService,
                 private router: Router,

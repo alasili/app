@@ -1,7 +1,11 @@
 <ion-content>
-    <ion-slides [options]="slideConfig" style="margin-bottom: 8px;">
+    <div class="app-title">
+        <span class="mongol">ᠲᠡᠷᠢᠭᠦᠨ</span>
+        <span class="mongol">ᠨᠢᠭᠤᠷ</span>
+    </div>
+    <ion-slides [options]="slideConfig" style="margin-bottom: 8px;" class="home-slides">
         <ion-slide *ngFor="let item of data; let i = index;">
-            <img [src]="host + item.pic">
+            <img [src]="host + item.pic" class="slide-img">
         </ion-slide>
     </ion-slides>
 
@@ -27,5 +31,100 @@
         </div>
     </div>
 
+    <div class="item-inner title-block">
+        <div class="item-title">
+            <div class="title-part-left">
+                <div class="title-spec"></div>
+                <div class="text-wrapper mongol-wrapper">
+                    <span class="mongol">ᠡᠷᠳᠡᠮ</span>
+                    <span class="mongol">ᠰᠢᠨᠵᠢᠯᠡᠭᠡ</span>
+                </div>
+            </div>
+            
+        </div>
+        <div class="item-after" (click)="gotoNewsList()">
+            <div class="l-font mongol-wrapper">
+                <span class="mongol">ᠰᠣᠨᠢᠨ</span>
+                <span class="mongol">ᠮᠡᠳᠡᠭᠡ</span>
+                <span class="arrow-right"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row news-block">
+        <div class="col-30" *ngFor="let item of newsData; let i = index;" (click)="detailChange(item)">
+            <div class="news-wrapper">
+                <div class="mask-text-box">
+                    <div class="mongol-wrapper">
+                        <span class="mongol">{{item.title.substring(0,20)}}</span>
+                    </div>
+                </div>
+                <img [src]="item.ico ? host + item.ico : ''">
+            </div>
+        </div>
+    </div>
+
+    <div class="item-inner title-block">
+        <div class="item-title">
+            <div class="title-part-left">
+                <div class="title-spec"></div>
+                <div class="text-wrapper mongol-wrapper">
+                    <span class="mongol">轮询</span>
+                    <span class="mongol">3</span>
+                    <span class="mongol">4</span>
+                </div>
+            </div>
+            
+        </div>
+        <div class="item-after">
+            <div class="l-font mongol-wrapper">
+                <span class="mongol">ᠰᠣᠨᠢᠨ</span>
+                <span class="mongol">ᠮᠡᠳᠡᠭᠡ</span>
+                <span class="arrow-right"></span>
+            </div>
+        </div>
+    </div>
+
+    <ion-slides [options]="slideConfig" style="margin-bottom: 8px;">
+        <ion-slide *ngFor="let item of slidesData2; let i = index;">
+            <img [src]="item.ico ? host + item.ico : ''" class="slide-img">
+        </ion-slide>
+    </ion-slides>
+
+    <div class="item-inner title-block">
+        <div class="item-title">
+            <div class="title-part-left">
+                <div class="title-spec"></div>
+                <div class="text-wrapper mongol-wrapper">
+                    <span class="mongol">青铜器</span>
+                    <span class="mongol">5</span>
+                    <span class="mongol">6</span>
+                </div>
+            </div>
+            
+        </div>
+        <div class="item-after">
+            <div class="l-font mongol-wrapper">
+                <span class="mongol">ᠰᠣᠨᠢᠨ</span>
+                <span class="mongol">ᠮᠡᠳᠡᠭᠡ</span>
+                <span class="arrow-right"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row news-block">
+        <div class="col-30"  *ngFor="let item of musemList2; let i = index;">
+            <div class="news-wrapper">
+                <div class="mask-text-box">
+                    <div class="mongol-wrapper">
+                        <span class="mongol">{{item.title.substring(0,20)}}</span>
+                    </div>
+                </div>
+                <img [src]="item.ico ? host + item.ico : ''">
+            </div>
+        </div>
+    </div>
+    <!--
     <bee-list [data]="list" (onItemClick)="detailChange($event)"></bee-list>
+    -->
 </ion-content>

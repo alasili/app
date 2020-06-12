@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {DetailComponent} from './grid/detail/detail.component';
+import {GridComponent} from './grid/grid.component';
 
 const routes: Routes = [
     {
@@ -10,6 +11,10 @@ const routes: Routes = [
     {
         path: 'detail',
         component: DetailComponent
+    },
+    {
+        path: 'grid',
+        component: GridComponent
     },
     {
         path: '',

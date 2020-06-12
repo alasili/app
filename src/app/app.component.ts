@@ -15,6 +15,7 @@ export class AppComponent {
                 private statusBar: Bar) {
         this.initializeApp();
         this.changeStatusBar();
+        
     }
 
     initializeApp() {

@@ -8,12 +8,20 @@ const routes: Routes = [
         component: ViewsPage,
         children: [
             {
-                path: 'about',
-                loadChildren: () => import('../about/about.module').then(m => m.AboutModule)
-            },
-            {
                 path: 'home',
                 loadChildren: () => import('../home/home.module').then(m => m.HomeModule)
+            },
+            {
+                path: 'tab2',
+                loadChildren: () => import('../grid/grid.module').then(m => m.GridModule)
+            },
+            {
+                path: 'tabMap',
+                loadChildren: () => import('../home/home.module').then(m => m.HomeModule)
+            },
+            {
+                path: 'about',
+                loadChildren: () => import('../about/about.module').then(m => m.AboutModule)
             },
             {
                 path: 'grid',
