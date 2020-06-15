@@ -3,6 +3,7 @@ import {HttpService} from '../service/http/http.service';
 import Config from '../config';
 import {IonRefresher} from '@ionic/angular';
 import {Router} from '@angular/router';
+import {Plugins} from '@capacitor/core';
 
 @Component({
     selector: 'app-home',
@@ -143,20 +144,20 @@ export class HomeComponent implements OnInit {
         this.getData();
     }
 
-    gotoNewsList(sid, catId) :void{
+    gotoNewsList(sid, catId): void {
         this.router.navigate(['grid'], {queryParams: {par: '1,' + sid + ',' + catId}});
     }
 
-    onTabClick(i: any):void {
+    onTabClick(i: any): void {
         console.log(i);
-        switch (i)
-        {
+        switch (i) {
             case 0:
                 this.detailChange({
                     id: 34
                 });
                 break;
             case 1:
+                this.openVr();
                 break;
             case 2:
                 this.gotoNewsList(16, 43);
@@ -165,6 +166,11 @@ export class HomeComponent implements OnInit {
                 this.gotoNewsList(15, 40);
                 break;
         }
-        
+
+    }
+
+    async openVr() {
+        const {Browser} = Plugins;
+        await Browser.open({url: 'https://720yun.com/t/212jrghasf4?scene_id=27643058'});
     }
 }
