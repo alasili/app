@@ -4,6 +4,8 @@ import Config from '../config';
 import {IonRefresher} from '@ionic/angular';
 import {Router} from '@angular/router';
 import {Plugins} from '@capacitor/core';
+import {ModalController} from '@ionic/angular';
+import {VrPageComponent} from './vr-page/vr-page.component';
 
 @Component({
     selector: 'app-home',
@@ -53,7 +55,8 @@ export class HomeComponent implements OnInit {
     ];
 
     constructor(private http: HttpService,
-                private router: Router) {
+                private router: Router,
+                public modal: ModalController) {
     }
 
     ngOnInit() {
@@ -169,8 +172,15 @@ export class HomeComponent implements OnInit {
 
     }
 
+    // async openVr() {
+    //     const {Browser} = Plugins;
+    //     await Browser.open({url: 'https://720yun.com/t/212jrghasf4?scene_id=27643058', windowName: '_self'});
+    // }
+
     async openVr() {
-        const {Browser} = Plugins;
-        await Browser.open({url: 'https://720yun.com/t/212jrghasf4?scene_id=27643058'});
+        const modal = await this.modal.create({
+            component: VrPageComponent
+        });
+        return await modal.present();
     }
 }
