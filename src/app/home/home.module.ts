@@ -18,9 +18,6 @@ import {VrPageComponent} from './vr-page/vr-page.component';
         HomeRoutingModule,
         IonicModule,
         ComponentModule
-    ],
-    entryComponents: [
-        VrPageComponent
     ]
 })
 export class HomeModule { }

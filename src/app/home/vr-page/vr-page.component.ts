@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {ModalController} from '@ionic/angular';
 
 @Component({
     selector: 'app-vr-page',
@@ -8,14 +7,10 @@ import {ModalController} from '@ionic/angular';
 })
 export class VrPageComponent implements OnInit {
 
-    constructor(public modal: ModalController) {
+    constructor() {
     }
 
     ngOnInit() {
-    }
-
-    close() {
-        this.modal.dismiss();
     }
 
 }
