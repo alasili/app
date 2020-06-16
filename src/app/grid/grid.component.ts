@@ -85,13 +85,14 @@ export class GridComponent implements OnInit {
                 if (this.pid != -1) {
                     dd.forEach(d => {
                         if (d.id === this.pid) {
-                            this.title = d.subname != null && d.subname.length >0 ? d.subname : d.title;
+                            //this.title = d.subname != null && d.subname.length >0 ? d.subname : d.title;
 
                             var son = d.son ? d.son : [];
                             son.forEach(dSon => {
                                 if (this.segmentValue2 === dSon.scode) {
                                     console.log(dSon);
                                     this.data.push(dSon.title);
+                                    this.title = dSon.name;
                                 }
                             });
                         }
