@@ -74,7 +74,7 @@ export class AboutComponent implements OnInit {
         const modal = await this.modal.create({
             componentProps: {
                 type,
-                title: type === 1 ? '行业群' : '文创微店'
+                title: type === 1 ? 'ᠠᠵᠢᠯ ᠲᠥᠷᠥᠯ ᠤᠨ ᠪᠦᠯᠦᠭ' : 'ᠰᠣᠶᠣᠯ ᠤᠨ ᠡᠭᠦᠳᠦᠯᠲᠡ ᠶᠢᠨ ᠪᠢᠴᠢᠯ ᠳᠡᠯᠭᠡᠭᠦᠷ'
             },
             component: QrcodeComponent
         });

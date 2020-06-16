@@ -7,7 +7,7 @@
                 </ion-buttons>
 
                 <ion-title style="text-align: center">
-                    <ion-label class="title"> 发展历程 </ion-label>
+                    <ion-label class="title">  </ion-label>
                 </ion-title>
             </ion-toolbar>
         </div>
@@ -24,6 +24,9 @@
             <img [src]="host + detail.ico">
         </div>
 
-        <div *ngIf="loading" class="bee-detail-content" [innerHTML]="detail.content"></div>
+        <div *ngIf="loading" class="bee-detail-content">
+            <div class="title"> ᠬᠥᠭᠵᠢᠯᠲᠡ ᠶᠢᠨ ᠶᠠᠪᠤᠴᠠ </div>
+            <div [innerHTML]="detail.content"></div>
+        </div>
     </div>
 </ion-content>

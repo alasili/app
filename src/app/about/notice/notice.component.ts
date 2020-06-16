@@ -33,8 +33,10 @@ export class NoticeComponent implements OnInit {
         };
         this.http.get(params).subscribe(res => {
             if (res.code === 1) {
+                const data = res.data;
+                data.content = data.content.replace(/src=["]/g, `src="${this.host}`);
+                this.data = data;
                 this.loading = true;
-                this.data = res.data;
             }
             loading.dismiss();
         });

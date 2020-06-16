@@ -7,7 +7,7 @@
                 </ion-buttons>
 
                 <ion-title style="text-align: center">
-                    <ion-label class="title"> 简介 </ion-label>
+                    <ion-label class="title"></ion-label>
                 </ion-title>
             </ion-toolbar>
         </div>
@@ -15,6 +15,9 @@
         <div *ngIf="loading && data.ico" class="bee-detail-cover">
             <img [src]="host + data.ico">
         </div>
-        <div *ngIf="loading" class="bee-detail-content" [innerHTML]="data.content"></div>
+        <div *ngIf="loading" class="bee-detail-content">
+            <div class="title"> ᠮᠦᠽᠧᠶ ᠶᠢᠨ ᠲᠣᠪᠴᠢ ᠲᠠᠨᠢᠯᠴᠠᠭᠤᠯᠭ᠎ᠠ </div>
+            <div [innerHTML]="data.content"></div>
+        </div>
     </div>
 </ion-content>

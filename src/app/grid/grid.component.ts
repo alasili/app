@@ -178,7 +178,7 @@ export class GridComponent implements OnInit {
             return;
 
         this.back = pSplit.length > 1;
-        
+
         this.requestType = pSplit[0];
 
         if (pSplit.length > 1) {
@@ -211,10 +211,15 @@ export class GridComponent implements OnInit {
     }
 
     safeHtml(content) {
-        return this.sanitizer.bypassSecurityTrustHtml(content);
+        const str = content.replace(/<[^>]+>/g, '').substring(0, 100);
+        return this.sanitizer.bypassSecurityTrustHtml(str);
     }
 
     formatDate(date) {
         return date.substring(0, date.indexOf(' '));
+    }
+
+    handleTitle(str: any) {
+        return str.replace(/<[^>]+>/g, '');
     }
 }

@@ -107,6 +107,8 @@
     word-wrap: break-word;
     padding-bottom: 15px;
     width: 100%;
+    display: flex;
+    align-items: flex-end;
 }
 .desc-wrapper .second-line {
     color: #bfbfbf;

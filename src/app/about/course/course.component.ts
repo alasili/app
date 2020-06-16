@@ -53,10 +53,11 @@ export class CourseComponent implements OnInit {
             url: `api.php/about/${this.courseId}`,
         };
         this.http.get(params).subscribe(res => {
-            console.log(res, '5544');
             if (res.code === 1) {
+                const data = res.data;
+                data.content = data.content.replace(/src=["]/g, `src="${this.host}`);
+                this.detail = data;
                 this.loading = true;
-                this.detail = res.data;
             }
             loading.dismiss();
         });

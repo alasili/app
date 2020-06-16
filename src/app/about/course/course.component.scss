@@ -25,5 +25,14 @@
         overflow-x: auto;
         font-size: 16px;
         font-family: var(--bee-font-family);
+
+        .title {
+            font-weight: bold;
+            font-size: 20px;
+        }
     }
+}
+
+:host ::ng-deep img {
+    max-height: 100%;
 }
