@@ -5,7 +5,14 @@
         <div class="detail-cover" *ngIf="data.ico" style="display:none;">
             <img [src]="host + data.ico">
         </div>
-        <div class="detail-content" [innerHTML]="data.content">
+        <div class="detail-content">
+            <div class="title">
+                {{data.title}}
+            </div>
+            <div class="time">
+                {{data.update_time | date: 'yyyy/MM/dd hh:ss'}}
+            </div>
+            <div [innerHTML]="data.content"></div>
         </div>
     </div>
 </ion-content>

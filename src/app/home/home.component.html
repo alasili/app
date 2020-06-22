@@ -1,10 +1,21 @@
+<ion-header translucent>
+    <ion-toolbar mode="ios">
+        <ion-buttons slot="start">
+            <img src="../../assets/logo.png" height="50px" alt="">
+        </ion-buttons>
+        <ion-buttons slot="end" (click)="openVr()">
+            <img src="../../assets/image/vr.png" height="50px" alt="">
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
 <ion-content>
-    <div class="app-title">
-        <div class="mongol-wrapper">
-            <span class="mongol">ᠲᠡᠷᠢᠭᠦᠨ</span>
-            <span class="mongol">ᠨᠢᠭᠤᠷ</span>
-        </div>
-    </div>
+<!--    <div class="app-title">-->
+<!--        <div class="mongol-wrapper">-->
+<!--            <span class="mongol">ᠲᠡᠷᠢᠭᠦᠨ</span>-->
+<!--            <span class="mongol">ᠨᠢᠭᠤᠷ</span>-->
+<!--        </div>-->
+<!--    </div>-->
     <ion-slides [options]="slideConfig" style="margin-bottom: 8px;" class="home-slides slide-container">
         <ion-slide *ngFor="let item of data; let i = index;" class="slide-wrapper">
             <img [src]="host + item.pic" class="slide-img">
@@ -16,17 +27,18 @@
     </ion-refresher>
 
     <div class="bee-tabs">
-        <div class="bee-tabs-item" *ngFor="let item  of tabs; let i = index;" (click)="onTabClick(i)">
+        <div class="bee-tabs-item" *ngFor="let item  of tabs; let i = index;" (click)="onTabClick(item)">
             <div class="item-icon"><img src="../../../assets/image/{{item.icon}}.png"/></div>
             <div class="item-label">
-                <span [innerHTML]="item.label"></span>
+<!--                <span [innerHTML]="item.label"></span>-->
+                <img [src]="item.icons"/>
             </div>
         </div>
     </div>
 
     <div class="bee-title">
         <div class="bee-title-left">
-            
+
         </div>
         <div class="bee-title-right">
 
@@ -42,7 +54,7 @@
                     <span class="mongol">ᠮᠡᠳᠡᠭᠡ</span>
                 </div>
             </div>
-            
+
         </div>
         <div class="item-after" (click)="gotoNewsList(1,31)">
             <div class="l-font mongol-wrapper">
@@ -76,7 +88,7 @@
                     <span class="mongol">ᠲᠠᠨᠢᠯᠴᠠᠭᠤᠯᠬᠤ</span>
                 </div>
             </div>
-            
+
         </div>
         <div class="item-after" (click)="gotoNewsList(13,29)">
             <div class="l-font mongol-wrapper">
@@ -103,7 +115,7 @@
                     <span class="mongol">ᠬᠠᠳᠠᠭᠠᠯᠠᠯᠲᠠ</span>
                 </div>
             </div>
-            
+
         </div>
     </div>
 

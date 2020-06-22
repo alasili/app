@@ -7,7 +7,8 @@
     </ion-segment>
 </ion-header>
 -->
-<bee-header [title]="title" [back]="back"></bee-header>
+<bee-header [title]="title" [back]="back">
+</bee-header>
 
 <ion-content>
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh()">
@@ -28,7 +29,7 @@
 -->
     <ion-slides [options]="slideConfig" style="margin-bottom: 8px;" class="slide-container">
         <ion-slide *ngFor="let item of data; let i = index;" class="slide-wrapper">
-            <img [src]="host + item" class="slide-img">
+            <img *ngIf="item" [src]="host + item" class="slide-img">
         </ion-slide>
     </ion-slides>
 

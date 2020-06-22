@@ -31,23 +31,28 @@ export class HomeComponent implements OnInit {
     tabs = [
         {
             icon: 'home_tab1',
-            label: 'ᠦᠵᠡᠰᠬᠦᠯᠡᠩ <br> ᠦᠨ <br> ᠠᠩᠬᠠᠷᠤᠯ',
-            value: 1
+            // label: 'ᠦᠵᠡᠰᠬᠦᠯᠡᠩ <br> ᠦᠨ <br> ᠠᠩᠬᠠᠷᠤᠯ',
+            label: ' ᠠᠭᠤᠯᠭ᠎ᠠ <br> ᠬᠦᠮᠥᠵᠢᠯ',
+            icons: '../../assets/image/one.png',
+            value: 12
         },
         {
             icon: 'home_tab2',
             label: 'ᠬᠡᠶ᠋ᠢᠰᠪᠦᠷᠢ <br> ᠮᠦᠽᠧᠶ',
-            value: 2
+            icons: '../../assets/image/two.png',
+            value: 48
         },
         {
             icon: 'home_tab3',
             label: `ᠰᠣᠶᠣᠯ ᠤᠨ <br>ᠡᠭᠦᠳ᠋ᠦᠯᠲᠡ ᠶ᠋ᠢᠨ <br> ᠦᠶᠯᠡᠳᠬᠦᠨ`,
-            value: 3
+            icons: '../../assets/image/three.png',
+            value: 14
         },
         {
             icon: 'home_tab4',
             label: 'ᠡᠷᠳᠠᠮ <br> ᠰᠢᠠᠵᠢᠯᠠ‍ᠭᠡ',
-            value: 4
+            icons: '../../assets/image/four.png',
+            value: 15
         }
     ];
 
@@ -147,26 +152,37 @@ export class HomeComponent implements OnInit {
         this.router.navigate(['grid'], {queryParams: {par: '1,' + sid + ',' + catId}});
     }
 
-    onTabClick(i: any): void {
-        console.log(i);
-        switch (i) {
-            case 0:
-                this.detailChange({
-                    id: 34
-                });
-                break;
-            case 1:
-                this.openVr();
-                break;
-            case 2:
-                this.gotoNewsList(16, 43);
-                break;
-            case 3:
-                this.gotoNewsList(15, 40);
-                break;
-        }
-
+    onTabClick(event: any): void {
+        this.router.navigate(['/views/nav'], {queryParams: {id: event.value}});
+        // this.router.navigate(['/grid'], {
+        //     queryParams: {
+        //         did: event.scode,
+        //         type: 1,
+        //         parent: event.pcode
+        //     }
+        // });
     }
+
+    // onTabClick(i: any): void {
+    //     console.log(i);
+    //     switch (i) {
+    //         case 0:
+    //             this.detailChange({
+    //                 id: 34
+    //             });
+    //             break;
+    //         case 1:
+    //             this.openVr();
+    //             break;
+    //         case 2:
+    //             this.gotoNewsList(16, 43);
+    //             break;
+    //         case 3:
+    //             this.gotoNewsList(15, 40);
+    //             break;
+    //     }
+    //
+    // }
 
     openVr() {
         this.router.navigate(['/views/home/vr']);

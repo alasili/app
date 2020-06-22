@@ -1,0 +1,12 @@
+<bee-header [back]="'/views/home'">
+</bee-header>
+
+<ion-content>
+    <div class="bee-nav">
+        <div class="bee-nav-item" *ngFor="let item of data;" (click)="itemClick(item)">
+            <div class="bee-nav-item-content">
+                <img [src]="host + item.ico">
+            </div>
+        </div>
+    </div>
+</ion-content>

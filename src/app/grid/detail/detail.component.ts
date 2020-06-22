@@ -15,10 +15,17 @@ export class DetailComponent implements OnInit {
     loading = false;
     data: any;
 
+    public type: string;
+    public pid: string;
+    public did: string;
+
     constructor(private http: HttpService,
                 public load: LoadingController,
                 private route: ActivatedRoute) {
         this.route.queryParams.subscribe(res => {
+            this.type = res.type;
+            this.pid = res.parent;
+            this.did = res.did;
             this.getDetail(res.id);
         });
     }

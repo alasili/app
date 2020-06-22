@@ -13,10 +13,10 @@ export class ViewsPage implements OnInit {
     @ViewChild('exhibition1', {static: true}) exhibition1;
     @ViewChild('exhibition2', {static: true}) exhibition2;
 
-    @ViewChild('tabbar') tabbar:ElementRef;
+    @ViewChild('tabbar') tabbar: ElementRef;
 
     constructor(private router: Router,
-        private el:ElementRef) {
+                private el: ElementRef) {
     }
 
     slideOpts = {
@@ -109,6 +109,7 @@ export class ViewsPage implements OnInit {
     segmentChanged(ev: any) {
         this.slides.slideTo(ev.detail.value, 400);
     }
+
     gotoMap() {
         this.router.navigate(['/detail'], {queryParams: {id: '33'}});
     }
@@ -116,14 +117,20 @@ export class ViewsPage implements OnInit {
     gotoNewsList(par) {
         this.router.navigate(['grid'], {queryParams: {par: par}});
     }
+
+    navClick(url: string, id: any) {
+        this.router.navigate([url], {queryParams: {id}});
+    }
+
     onTabClick(idx) {
         var na = this.el.nativeElement;//this.tabbar.nativeElement;
         var buttons = na.querySelectorAll('ion-tab-button');
         console.log(buttons);
         buttons.forEach(btn => {
-            console.log(btn)
-            if (btn.classList.contains('tab-selected'))
+            console.log(btn);
+            if (btn.classList.contains('tab-selected')) {
                 btn.classList.remove('tab-selected');
+            }
         });
         buttons[idx].classList.add('tab-selected');
     }

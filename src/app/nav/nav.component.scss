@@ -1,0 +1,42 @@
+.bee-nav {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    &-item {
+        max-width: calc(100% / 3);
+        flex-basis: calc(100% / 3);
+        padding-top: calc(100% / 3);
+        position: relative;
+
+        &:after {
+            content: '';
+            width: 1px;
+            position: absolute;
+            right: 0; top: 0; bottom: 0;
+            background-color: #f8f8f8;
+        }
+
+        &:before {
+            content: '';
+            height: 1px;
+            position: absolute;
+            right: 0; left: 0; bottom: 0;
+            background-color: #f8f8f8;
+        }
+
+        &-content {
+            position: absolute;
+            left: 0; right: 0;
+            top: 0; bottom: 0;
+            box-sizing: border-box;
+            padding: 16px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                display: flex;
+            }
+        }
+    }
+}

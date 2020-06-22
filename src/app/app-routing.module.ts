@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {DetailComponent} from './grid/detail/detail.component';
 import {GridComponent} from './grid/grid.component';
+import {NavComponent} from './nav/nav.component';
 
 const routes: Routes = [
     {

@@ -4,11 +4,11 @@ import Config from '../config';
 import {UtilsService} from '../service/utils/utils.service';
 import {IonInfiniteScroll, IonRefresher} from '@ionic/angular';
 import {ActivatedRoute, Router} from '@angular/router';
-import { ɵangular_packages_platform_browser_platform_browser_k } from '@angular/platform-browser';
-import { prepareEventListenerParameters } from '@angular/compiler/src/render3/view/template';
+import {ɵangular_packages_platform_browser_platform_browser_k} from '@angular/platform-browser';
+import {prepareEventListenerParameters} from '@angular/compiler/src/render3/view/template';
 // import { SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS } from 'constants';
 // import { spawnSync } from 'child_process';
-import { DomSanitizer } from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-grid',
@@ -17,7 +17,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class GridComponent implements OnInit {
 
-    @ViewChild(IonInfiniteScroll, {static: true}) infiniteScroll: IonInfiniteScroll;
+    @ViewChild(IonInfiniteScroll, {static: false}) infiniteScroll: IonInfiniteScroll;
     @ViewChild(IonRefresher, {static: false}) refresher: IonRefresher;
     @ViewChild('slides', {static: true}) slides;
 
@@ -36,7 +36,7 @@ export class GridComponent implements OnInit {
     };
     title = '鄂青博快讯';
     back = true;
-    requestType = 0;
+    requestType = '0';
     pid = -1;
     catPic = '';
 
@@ -45,19 +45,22 @@ export class GridComponent implements OnInit {
                 private router: Router,
                 private toast: UtilsService,
                 public sanitizer: DomSanitizer) {
-        this.route.params.subscribe(res => {
-            if (res.par === null || res.par === undefined) {
-                this.parseParams(this.route.snapshot.queryParams.par);
-            }
-            else {
-                this.parseParams(res.par);
-            }
-        })
+        this.route.queryParams.subscribe(res => {
+            this.requestType = res.type;
+            this.pid = res.parent;
+            this.segmentValue2 = res.did;
+            this.getTabs();
+            this.getDatas();
+            // if (res.par === null || res.par === undefined) {
+            //     this.parseParams(this.route.snapshot.queryParams.par);
+            // }
+            // else {
+            //     this.parseParams(res.par);
+            // }
+        });
     }
 
     ngOnInit() {
-        this.getTabs();
-        this.getDatas();
     }
 
     getTabs(): void {
@@ -67,7 +70,6 @@ export class GridComponent implements OnInit {
         this.http.get(params).subscribe(res => {
             if (res.code === 1) {
                 var dd = res.data;
-                console.log(dd);
                 /*
                 this.segmentValue = res.data[0].id;
                 this.coverUrl = res.data[0].pic;
@@ -85,12 +87,11 @@ export class GridComponent implements OnInit {
                 if (this.pid != -1) {
                     dd.forEach(d => {
                         if (d.id === this.pid) {
-                            this.title = d.subname != null && d.subname.length >0 ? d.subname : d.title;
+                            this.title = d.subname != null && d.subname.length > 0 ? d.subname : d.title;
 
                             var son = d.son ? d.son : [];
                             son.forEach(dSon => {
                                 if (this.segmentValue2 === dSon.scode) {
-                                    console.log(dSon);
                                     this.data.push(dSon.title);
                                 }
                             });
@@ -107,16 +108,24 @@ export class GridComponent implements OnInit {
             data: {}
         };
         this.http.get(params).subscribe(res => {
-            this.refresher.complete();
-            this.infiniteScroll.complete();
+            if (this.refresher) {
+                this.refresher.complete();
+            }
+            if (this.infiniteScroll) {
+                this.infiniteScroll.complete();
+            }
 
             if (res.code === 1) {
                 this.list = this.list.concat(res.data);
                 if (this.list.length === res.rowtotal) {
                     this.toast.showToast('ᠲᠦᠷ ᠨᠠᠩ ᠣᠯᠠᠨ ᠲᠣᠭ᠎ᠠ ᠪᠠᠷᠢᠮᠲᠠ ᠪᠠᠶᠬᠤ ᠦᠭᠡᠢ', 'top');
-                    this.infiniteScroll.disabled = true;
+                    if (this.infiniteScroll) {
+                        this.infiniteScroll.disabled = true;
+                    }
                 } else {
-                    this.infiniteScroll.disabled = false;
+                    if (this.infiniteScroll) {
+                        this.infiniteScroll.disabled = true;
+                    }
                 }
             } else {
                 this.toast.showToast('错误', 'top');
@@ -169,13 +178,21 @@ export class GridComponent implements OnInit {
     }
 
     detailChange(event: any): void {
-        this.router.navigate(['/detail'], {queryParams: {id: event.id}});
+        this.router.navigate(['/detail'], {
+            queryParams: {
+                id: event.id,
+                did: this.segmentValue2,
+                type: this.requestType,
+                parent: this.pid
+            }
+        });
     }
 
     parseParams(res) {
         var pSplit = res.split(',');
-        if (pSplit.length == 0)
+        if (pSplit.length == 0) {
             return;
+        }
 
         this.back = pSplit.length > 1;
 
@@ -188,10 +205,11 @@ export class GridComponent implements OnInit {
     }
 
     getDatas() {
-        if (this.requestType == 0)
+        if (this.requestType === '0') {
             this.cmsSearch();
-        else if (this.requestType == 1)
+        } else if (this.requestType === '1') {
             this.getData();
+        }
     }
 
     cmsSearch() {

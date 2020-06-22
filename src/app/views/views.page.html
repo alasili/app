@@ -4,15 +4,27 @@
             <bee-icon name="iconshouye" size="25"></bee-icon>
         </ion-tab-button>
 
-        <ion-tab-button tab="grid/1,13,27" (click)="onTabClick(1)">
+<!--        <ion-tab-button tab="grid/1,13,27" (click)="onTabClick(1)">-->
+<!--            <bee-icon name="iconchenliezhanlan" size="25"></bee-icon>-->
+<!--        </ion-tab-button>-->
+
+<!--        <ion-tab-button (click)="gotoMap()">-->
+<!--            <bee-icon name="iconbowuguanditu" size="25"></bee-icon>-->
+<!--        </ion-tab-button>-->
+
+<!--        <ion-tab-button tab="grid/1,16,42" (click)="onTabClick(3)">-->
+<!--            <bee-icon name="iconshuziqingtong" size="25"></bee-icon>-->
+<!--        </ion-tab-button>-->
+
+        <ion-tab-button tab="nav" (click)="navClick('/views/nav', 13)">
             <bee-icon name="iconchenliezhanlan" size="25"></bee-icon>
         </ion-tab-button>
 
-        <ion-tab-button (click)="gotoMap()">
-            <bee-icon name="iconbowuguanditu" size="25"></bee-icon>
+        <ion-tab-button tab="maps" (click)="navClick('/views/maps', 1)">
+            <bee-icon name="iconsanzuding" size="25"></bee-icon>
         </ion-tab-button>
 
-        <ion-tab-button tab="grid/1,16,42" (click)="onTabClick(3)">
+        <ion-tab-button tab="navs" (click)="navClick('/views/navs', 16)">
             <bee-icon name="iconshuziqingtong" size="25"></bee-icon>
         </ion-tab-button>
 

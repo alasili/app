@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {ViewsPage} from './views.page';
 import {DetailComponent} from '../grid/detail/detail.component';
+import {NavComponent} from '../nav/nav.component';
 
 const routes: Routes = [
     {
@@ -13,13 +14,25 @@ const routes: Routes = [
                 loadChildren: () => import('../home/home.module').then(m => m.HomeModule)
             },
             {
-                path: 'grid/:par',
+                path: 'grid',
                 loadChildren: () => import('../grid/grid.module').then(m => m.GridModule)
             },
             {
                 path: 'detail',
                 loadChildren: () => import('../home/home.module').then(m => m.HomeModule)
                 // component: DetailComponent
+            },
+            {
+                path: 'nav',
+                component: NavComponent
+            },
+            {
+                path: 'navs',
+                component: NavComponent
+            },
+            {
+                path: 'maps',
+                component: NavComponent
             },
             {
                 path: 'about',

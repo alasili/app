@@ -8,6 +8,7 @@ import {ViewsPageRoutingModule} from './views-routing.module';
 
 import {ViewsPage} from './views.page';
 import {ComponentModule} from '../component/component.module';
+import {NavComponent} from '../nav/nav.component';
 
 @NgModule({
     imports: [
@@ -18,7 +19,8 @@ import {ComponentModule} from '../component/component.module';
         ComponentModule
     ],
     declarations: [
-        ViewsPage
+        ViewsPage,
+        NavComponent
     ]
 })
 export class ViewsPageModule {
